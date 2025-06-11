@@ -1,5 +1,5 @@
 ---
-title: "Checkpoint 2 - Team UFO"
+title: "Team UFO"
 author: "Cory Maclauchlan, John Myers, Arivirku Thirugnanam"
 date: "6/24/2022"
 output:
@@ -39,6 +39,9 @@ The team initially discovered upon using the processed PDFs made available by th
 
 Using the criteria listed, we are forced to eliminate 95 documents with no valuable content.
 
+[^2]: Raw TIFF images from Government: <https://documents2.theblackvault.com/documents/cia/CIAUFOCD-FULL-UNTOUCHED.zip>
+[^1]: Processed "Searchable" PDFs with Advertisement: <https://documents2.theblackvault.com/documents/cia/CIAUFOCD-FULL-CONVERTED.zip>
+[^3]: Team GitHub with Data: <https://github.com/johnemyers/iste-612/tree/main/data/CIA-MY-OCR>
 \newpage
 
 # Initial Observations
@@ -75,7 +78,7 @@ After the analysis of the word and line counts per document, we next wanted to l
 
 Now that we know we have a reasonable data processing pipeline for the backend, we can now begin to look at refining our software development approach and converge on what information retrieval and text mining operations can be applied for our entire application.
 
-# Initial Cluster Exploration
+# Methodology
 
 We began looking at a high level of what clusters exist within the data when tokenizing actual English words within the documents.  Figure \ref{ElbowMethodOptimalK} shows the Sum of Square Distances for k-clusters where `k` is between 2 and 20.  If we choose a cluster size of 10 based upon the observations, Table \ref{Clusters} shows Word Clouds for four of those clusters. Further research will be conducted in this area in subsequent milestones to understand better what those clusters might indicate, as well as determine the similarity between documents within those clusters.
 
@@ -87,6 +90,6 @@ We began looking at a high level of what clusters exist within the data when tok
 |![](./images/4ab90ea9-fcd9-4e03-af6e-f0a3cbdc3442.png)|![](./images/77e349f4-1cea-4d99-987a-b8d84bd80b6a.png)|
 : Sample Word Clouds for Four Clusters\label{Clusters}
 
-[^2]: Raw TIFF images from Government: <https://documents2.theblackvault.com/documents/cia/CIAUFOCD-FULL-UNTOUCHED.zip>
-[^1]: Processed "Searchable" PDFs with Advertisement: <https://documents2.theblackvault.com/documents/cia/CIAUFOCD-FULL-CONVERTED.zip>
-[^3]: Team GitHub with Data: <https://github.com/johnemyers/iste-612/tree/main/data/CIA-MY-OCR>
+# Conclusion
+
+AFter the initial analysis using 
