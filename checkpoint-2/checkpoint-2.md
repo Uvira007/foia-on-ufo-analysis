@@ -92,4 +92,4 @@ We began looking at a high level of what clusters exist within the data when tok
 
 # Conclusion
 
-AFter the initial analysis using 
+AFter the initial analysis using K-means clustering, it was evident that the clusters did not map to the type of documents as expected. There was variability in cluster content observed between runs. Cluster #2 appeared to be consistently intact. All the 27 documents in this cluster were transcripts of Russian TV programs. Nearly all the documents are about the same size and quality whocih could have affected the cluster assignment more than the content. Almost all the "High Quality" documents were assigned to a couple of clusters, cluster #1, #8 and #9. Important predominate phrases were observed in multiple clusters (i.e., "Unclassified", "Air", "Force") and this might indicate low cohesiveness within a cluster or help identify words with little value for the use case. 
