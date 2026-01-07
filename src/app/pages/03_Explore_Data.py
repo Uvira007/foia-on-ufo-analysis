@@ -1,21 +1,27 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+from utils.assets import assets_images, pages_html
 
 import matplotlib.pyplot as plt
-import matplotlib
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import TruncatedSVD
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import Normalizer
+from wordcloud import WordCloud
 
-st.sidebar.image( "./images/explore.png", use_column_width=True)
+st.sidebar.image( str(assets_images / "explore.png"), width=True)
 st.sidebar.write('<style>body { margin: 0; font-family: Arial, Helvetica, sans-serif;} .header{padding: 10px 16px; background: #555; color: #f1f1f1; position:fixed;top:0;} .sticky { position: fixed; top: 0; width: 100%;} </style><div class="header" id="myHeader">FOIA Document Analysis</div>', unsafe_allow_html=True)
 
-style = open( "./pages/html/style.html")
+style = open( str(pages_html / "style.html"))
 st.markdown( style.read(), unsafe_allow_html=True )
 
-chevron = open( "./pages/html/explore.html")
+chevron = open( str(pages_html / "explore.html"))
 st.markdown(chevron.read(), unsafe_allow_html=True)
 
 
 ready = False
+maxK = 0
 
 try:
     x = st.session_state.pdf_lst
@@ -29,11 +35,6 @@ except AttributeError:
     st.warning( "Please start by processing PDF files and then try again." )
 
 if ready:
-
-  from sklearn.feature_extraction.text import TfidfVectorizer
-  from sklearn.decomposition import TruncatedSVD
-  from sklearn.pipeline import make_pipeline
-  from sklearn.preprocessing import Normalizer
 
   vectorizer = TfidfVectorizer(stop_words='english',lowercase=True)
   
@@ -61,14 +62,14 @@ if ready:
   plt.xlabel('k')
   plt.ylabel('Sum of Squared Distances')
   plt.title('Elbow Method For Optimal k')
-  st.pyplot( plt )
+  st.pyplot(plt)
   
-  plt.figure( 2 )
-  plt.plot( K, Silhouette_scores, 'bx-' )
-  plt.xlabel( 'k' )
-  plt.ylabel( 'Silhouette Score')
+  plt.figure(2)
+  plt.plot(K, Silhouette_scores, 'bx-')
+  plt.xlabel('k')
+  plt.ylabel('Silhouette Score')
   plt.title('Silhouette Score For Optimal k')
-  st.pyplot( plt )
+  st.pyplot(plt)
 
   true_k = st.slider( "Number of Clusters", min_value=0, max_value=maxK, value=0 )
 
@@ -79,7 +80,6 @@ if ready:
       wiki_cl=pd.DataFrame(list(zip(st.session_state.titles,st.session_state.counts,st.session_state.quality,labels)),columns=['title','count','quality','cluster'])
       print(wiki_cl.sort_values(by=['cluster']))
       
-      from wordcloud import WordCloud
       result={'cluster':labels,'wiki':st.session_state.pdf_lst}
       result=pd.DataFrame(result)
   

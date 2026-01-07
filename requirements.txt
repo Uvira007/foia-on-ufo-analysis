@@ -1,0 +1,11 @@
+ # Required packages
+streamlit
+nltk
+pdfminer
+pdfminer.six
+matplotlib
+advertools
+numpy
+pandas
+scikit-learn
+wordcloud
