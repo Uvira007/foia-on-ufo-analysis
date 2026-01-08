@@ -2,7 +2,7 @@ import nltk
 
 def ensure_nltk_resources():
     # Download required NLTK resources quietly
-    for res in ('punkt_tab', 'stopwords'):
+    for res in ('punkt_tab', 'stopwords', 'wordnet'):
         try:
             nltk.data.find(f'tokenizers/{res}')
         except LookupError:
