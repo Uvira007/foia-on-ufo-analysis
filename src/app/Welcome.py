@@ -1,14 +1,26 @@
 import sys
+import os
 from pathlib import Path
 
-# Adds 'src' to the system path
-src_path = str(Path(__file__).resolve().parents[1])
-if src_path not in sys.path:
-    sys.path.append(src_path)
-    
+# Anchor to project root (foia-analysis)
+# Since Welcome.py is in src/app/, we go up 2 levels
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+# Add the project root to sys.path so 'from src.app...' works
+if str(REPO_ROOT) not in sys.path:
+    sys.path.append(str(REPO_ROOT))
+
+# Now use absolute imports from the root
+from src.app.utils.assets import assets_images, assets_content, pages_html
+from src.config.nltk_setup import ensure_nltk_resources
+
 import streamlit as st
 from PIL import Image
 from utils.assets import assets_images, assets_content, pages_html
+from config.nltk_setup import ensure_nltk_resources
+
+# Run the setup script before any other logic
+ensure_nltk_resources()
 
 style_path = str(pages_html / "style.html")
 style = open(style_path).read()
