@@ -1,7 +1,6 @@
  # Required packages
 streamlit==1.40.0
 nltk
-pdfminer
 pdfminer.six
 matplotlib
 advertools
