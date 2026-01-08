@@ -1,5 +1,5 @@
  # Required packages
-streamlit
+streamlit==1.40.0
 nltk
 pdfminer
 pdfminer.six
