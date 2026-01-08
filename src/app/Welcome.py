@@ -17,7 +17,6 @@ from src.config.nltk_setup import ensure_nltk_resources
 import streamlit as st
 from PIL import Image
 from utils.assets import assets_images, assets_content, pages_html
-from config.nltk_setup import ensure_nltk_resources
 
 # Run the setup script before any other logic
 ensure_nltk_resources()
